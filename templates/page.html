@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+    <title>{{ object.title }}</title>
+{% endblock%}
+
+{% block content %}
+    <div id="pagina">
+        
+        {{object.text}}
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        function unescapeHTML(escapedHTML) {
+            return escapedHTML.replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
+        }
+
+        let page = document.getElementById("pagina")
+
+        var element = `{{ object.text }}`
+
+        page.innerHTML = unescapeHTML(element);
+    </script>
+{% endblock %}
